@@ -54,6 +54,7 @@ endif()
 
 add_subdirectory(ribbon)
 add_subdirectory(webview)
+add_subdirectory(webrequest)
 add_subdirectory(wizard)
 add_subdirectory(aui)
 add_subdirectory(artprov)
