@@ -59,5 +59,6 @@ add_subdirectory(wizard)
 add_subdirectory(aui)
 add_subdirectory(artprov)
 add_subdirectory(svg)
+add_subdirectory(treectrl)
 
 
