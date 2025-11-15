@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(samples)
 
 # Request the required wxWidgets libs
-find_package(wxWidgets 3.1 COMPONENTS core base ribbon webview net html aui stc REQUIRED)
+find_package(wxWidgets 3.1 COMPONENTS core base ribbon webview net html aui stc gl REQUIRED)
 include(${wxWidgets_USE_FILE})
 add_compile_definitions(WXUSINGDLL)
 
@@ -60,5 +60,6 @@ add_subdirectory(aui)
 add_subdirectory(artprov)
 add_subdirectory(svg)
 add_subdirectory(treectrl)
+add_subdirectory(opengl)
 
 
