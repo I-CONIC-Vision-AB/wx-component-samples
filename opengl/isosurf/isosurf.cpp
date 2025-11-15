@@ -28,6 +28,9 @@
 #include "wx/wfstream.h"
 #include "wx/zstream.h"
 #include "wx/txtstrm.h"
+#include "wx/filedlg.h"
+#include "wx/config.h"
+#include "wx/filename.h"
 
 #include "isosurf.h"
 #include "../../sample.xpm"
@@ -424,6 +427,13 @@ void TestGLCanvas::InitGL()
     }
 
     InitMaterials();
-    LoadSurface("isosurf.dat.gz");
+	wxString filename = wxConfig::Get()->Read("isosurf_filename", wxString());
+	if (!wxFileName::FileExists(filename)) {
+		filename = wxFileSelector("Isosurf data file", "../../..", "isosurf.dat.gz");
+	}
+	if (wxFileName::FileExists(filename)) {
+		LoadSurface(filename);
+		wxConfig::Get()->Write("isosurf_filename", filename);
+	}
 }
 

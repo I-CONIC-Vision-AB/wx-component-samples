@@ -29,6 +29,10 @@
 
 #include "../../sample.xpm"
 
+#include "wx/filedlg.h"
+#include "wx/config.h"
+#include "wx/filename.h"
+
 // ---------------------------------------------------------------------------
 // MyApp
 // ---------------------------------------------------------------------------
@@ -43,13 +47,14 @@ bool MyApp::OnInit()
     MyFrame *frame = new MyFrame(NULL, "wxWidgets Penguin Sample",
         wxDefaultPosition, wxDefaultSize);
 
-#if wxUSE_ZLIB
-    if (wxFileExists("penguin.dxf.gz"))
-        frame->GetCanvas()->LoadDXF("penguin.dxf.gz");
-#else
-    if (wxFileExists("penguin.dxf"))
-        frame->GetCanvas()->LoadDXF("penguin.dxf");
-#endif
+	wxString filename = wxConfig::Get()->Read("penguin_filename", wxString());
+	if (!wxFileName::FileExists(filename)) {
+		filename = wxFileSelector("Penguin DXF file", "../../..", "penguin.dxf.gz");
+	}
+	if (wxFileName::FileExists(filename)) {
+		frame->GetCanvas()->LoadDXF(filename);
+		wxConfig::Get()->Write("penguin_filename", filename);
+	}
 
     /* Show the frame */
     frame->Show(true);
