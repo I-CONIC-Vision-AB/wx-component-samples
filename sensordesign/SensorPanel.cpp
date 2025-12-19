@@ -24,7 +24,7 @@ EVT_CHECKBOX(SensorPanel::NUM_CAMERAS, SensorPanel::OnThreeCameras)
 EVT_RADIOBOX(SensorPanel::FOV_MODE, SensorPanel::OnFovMode)
 EVT_RADIOBOX(SensorPanel::BPS_MODE, SensorPanel::OnBpsMode)
 
-EVT_BUTTON(SensorPanel::CLIPBOARD, SensorPanel::OnCopyToClipboardVertical)
+EVT_BUTTON(SensorPanel::CLIPBOARD, SensorPanel::OnCopyToClipboard)
 wxEND_EVENT_TABLE()
 
 wxString SensorPanel::gsTitles[] = {
@@ -750,44 +750,44 @@ void SensorPanel::OnCopyToClipboard(wxCommandEvent& WXUNUSED(e))
 		for (int i = 0; i < CLIPBOARD - FOCAL_LENGTH; i++)
 		{
 			if (i>0)
-				s += '\t' + gsTitles[i];
+				s += ',' + gsTitles[i];
 			else
 				s += gsTitles[i];
 		}
 		s += '\n';
 
-		s += wxString::Format("%.2lf\t", cFocalLength);
-		s += wxString::Format("%d\t", cFocalLengthPixels);
-		s += wxString::Format("%.2lf\t", cFieldOfView);
-		s += wxString::Format("%.2lf\t", cTilt);
-		s += wxString::Format("%d\t", cCameras);
-		s += wxString::Format("%d\t", cFovMode);
-		s += wxString::Format("%.2lf\t", cImageWidthMm);
-		s += wxString::Format("%d\t", cImageWidthPixels);
-		s += wxString::Format("%.2lf\t", cImageHeightMm);
-		s += wxString::Format("%d\t", cImageHeightPixels);
-		s += wxString::Format("%d\t", cImageSize);
-		s += wxString::Format("%d\t", cNumMegaPixels);
-		s += wxString::Format("%.3lf\t", cMmPerPixel);
-		s += wxString::Format("%.2lf\t", cImageRatio);
-		s += wxString::Format("%.2lf\t", cHeight);
-		s += wxString::Format("%.2lf\t", cImageScale);
-		s += wxString::Format("%.2lf\t", cGsd);
-		s += wxString::Format("%.2lf\t", cOverlap);
-		s += wxString::Format("%.2lf\t", cGroundWidth);
-		s += wxString::Format("%.2lf\t", cGroundHeight);
-		s += wxString::Format("%.0lf\t", cLongestPath);
-		s += wxString::Format("%.3lf\t", cLongestPathFactor);
-		s += wxString::Format("%.2lf\t", cSpeed);
-		s += wxString::Format("%.2lf\t", cSpeedMs);
-		s += wxString::Format("%.2lf\t", cSpeedKnts);
-		s += wxString::Format("%d\t", cShutterSpeed);
-		s += wxString::Format("%.3lf\t", cExposureDistance);
-		s += wxString::Format("%.2lf\t", cEarthCurvature);
-		s += wxString::Format("%.2lf\t", cAreaPerHour);
-		s += wxString::Format("%d\t", cNumImages);
-		s += wxString::Format("%d\t", cDataPerHour);
-		s += wxString::Format("%.2lf", cExposureInterval);
+		s += wxString::Format("%.2lf,", cFocalLength);
+		s += wxString::Format("%d,", cFocalLengthPixels);
+		s += wxString::Format("%.2lf,", cFieldOfView);
+		s += wxString::Format("%.2lf,", cTilt);
+		s += wxString::Format("%d,", cCameras);
+		s += wxString::Format("%d,", cFovMode);
+		s += wxString::Format("%.2lf,", cImageWidthMm);
+		s += wxString::Format("%d,", cImageWidthPixels);
+		s += wxString::Format("%.2lf,", cImageHeightMm);
+		s += wxString::Format("%d,", cImageHeightPixels);
+		s += wxString::Format("%d,", cImageSize);
+		s += wxString::Format("%d,", cNumMegaPixels);
+		s += wxString::Format("%.3lf,", cMmPerPixel);
+		s += wxString::Format("%.2lf,", cImageRatio);
+		s += wxString::Format("%.2lf,", cHeight);
+		s += wxString::Format("%.2lf,", cImageScale);
+		s += wxString::Format("%.2lf,", cGsd);
+		s += wxString::Format("%.2lf,", cOverlap);
+		s += wxString::Format("%.2lf,", cGroundWidth);
+		s += wxString::Format("%.2lf,", cGroundHeight);
+		s += wxString::Format("%.0lf,", cLongestPath);
+		s += wxString::Format("%.3lf,", cLongestPathFactor);
+		s += wxString::Format("%.2lf,", cSpeed);
+		s += wxString::Format("%.2lf,", cSpeedMs);
+		s += wxString::Format("%.2lf,", cSpeedKnts);
+		s += wxString::Format("%d,", cShutterSpeed);
+		s += wxString::Format("%.3lf,", cExposureDistance);
+		s += wxString::Format("%.2lf,", cEarthCurvature);
+		s += wxString::Format("%.2lf,", cAreaPerHour);
+		s += wxString::Format("%d,", cNumImages);
+		s += wxString::Format("%d,", cDataPerHour);
+		s += wxString::Format("%.2lf,", cExposureInterval);
 		s += wxString::Format("%.0lf", cNetGainMeter);
 		s += '\n';
 
