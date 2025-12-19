@@ -52,6 +52,7 @@ if(WIN32)
 add_definitions(-D_WIN32_WINNT=0x0A00)
 endif()
 
+add_subdirectory(sensordesign)
 add_subdirectory(ribbon)
 add_subdirectory(webview)
 add_subdirectory(webrequest)
